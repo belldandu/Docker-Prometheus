@@ -36,5 +36,5 @@ fi
 cd /home/container
 
 MODIFIED_STARTUP=`echo ${STARTUP} | perl -pe 's@{{(.*?)}}@$ENV{$1}@g'`
-echo "./aemu/pspnet_adhocctl_server/pspnet_adhocctl_server ${MODIFIED_STARTUP}"
+echo "> ./aemu/pspnet_adhocctl_server/pspnet_adhocctl_server ${MODIFIED_STARTUP}"
 ./aemu/pspnet_adhocctl_server/pspnet_adhocctl_server $MODIFIED_STARTUP
