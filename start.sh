@@ -14,20 +14,20 @@ if [ ! -f "/home/container/aemu/pspnet_adhocctl_server/pspnet_adhocctl_server" ]
 	if [ -d "/home/container/aemu/" ]; then
 		# remove existing files to prevent git clashes
 		echo "Removing Existing files to prevent git clashes..."
-		echo "> rm -rf aemu"
+		echo ":/home/container$ rm -rf aemu"
 		rm -rf aemu
 	fi
 
 	# clone the aemu repository on github
 	echo "Cloning the aemu repository on github..."
-	echo "> git clone https://github.com/MrColdbird/aemu.git"
+	echo ":/home/container$ git clone https://github.com/MrColdbird/aemu.git"
 	git clone https://github.com/MrColdbird/aemu.git
 
 	# Compile the PSPNET_ADHOCCTL_SERVER
 	echo "Compiling the PSPNET_ADHOCCTL_SERVER in the cloned repository"
-	echo "> cd aemu/pspnet_adhocctl_server"
+	echo ":/home/container$ cd aemu/pspnet_adhocctl_server"
 	cd aemu/pspnetadhocctl_server
-	echo "> make"
+	echo ":/home/container$ make"
 	make
 else
     echo "Dependencies in place, to re-download this PSP Adhoc server please delete the aemu directory"
@@ -35,6 +35,14 @@ fi
 
 cd /home/container
 
-MODIFIED_STARTUP=`echo ${STARTUP} | perl -pe 's@{{(.*?)}}@$ENV{$1}@g'`
-echo "> ./aemu/pspnet_adhocctl_server/pspnet_adhocctl_server ${MODIFIED_STARTUP}"
-./aemu/pspnet_adhocctl_server/pspnet_adhocctl_server $MODIFIED_STARTUP
+# Replace Startup Variables
+MODIFIED_STARTUP=`eval echo $(echo ${STARTUP} | sed -e 's/{{/${/g' -e 's/}}/}/g')`
+echo ":/home/container$ ${MODIFIED_STARTUP}"
+
+# Run the Server
+${MODIFIED_STARTUP}
+
+if [ $? -ne 0 ]; then
+    echo "PTDL_CONTAINER_ERR: There was an error while attempting to run the start command."
+    exit 1
+fi
