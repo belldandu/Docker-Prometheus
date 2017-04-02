@@ -27,7 +27,7 @@ if [ ! -f "/home/container/aemu/pspnet_adhocctl_server/pspnet_adhocctl_server" ]
 	echo "Compiling the PSPNET_ADHOCCTL_SERVER in the cloned repository"
 	echo ":/home/container$ cd aemu/pspnet_adhocctl_server"
 	cd aemu/pspnet_adhocctl_server
-	echo ":/home/container$ make"
+	echo ":/home/container/aemu/pspnet_adhocctl_server$ make"
 	make
 else
     echo "Dependencies in place, to re-download this PSP Adhoc server please delete the aemu directory"
