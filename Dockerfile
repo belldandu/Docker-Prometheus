@@ -11,7 +11,7 @@ ENV         DEBIAN_FRONTEND noninteractive
 
 # Install Dependencies
 RUN         apt-get update
-RUN         apt-get install -y git gcc libsqlite3-dev
+RUN         apt-get install -y git gcc libsqlite3-dev make
 
 RUN         useradd -m -d /home/container container
 
