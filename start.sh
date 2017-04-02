@@ -57,7 +57,7 @@ if [ ! -f "/home/container/pspnet_adhocctl_server" ]; then
 	rm -rf aemu.tar.gz
 
 else
-	echo "Dependencies in place, to re-download this PSP Adhoc server please delete the aemu directory"
+	echo "Dependencies in place, to re-download this PSP Adhoc server please delete all files in this directory"
 fi
 
 cd /home/container
