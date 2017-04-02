@@ -6,7 +6,7 @@
 # ##
 sleep 3
 if [ "$(pwd)" -ne "/home/container" ]; then
-    cd /home/container
+	cd /home/container
 fi
 
 # Download and compile PSPNET_ADHOCCTL_SERVER, if it is missing
@@ -30,14 +30,18 @@ if [ ! -f "/home/container/aemu/pspnet_adhocctl_server/pspnet_adhocctl_server" ]
 	echo ":/home/container/aemu/pspnet_adhocctl_server$ make"
 	make
 else
-    echo "Dependencies in place, to re-download this PSP Adhoc server please delete the aemu directory"
+	echo "Dependencies in place, to re-download this PSP Adhoc server please delete the aemu directory"
 fi
 
-cd /home/container
+if [ "$(pwd)" -ne "/home/container/aemu/pspnet_adhocctl_server" ]; then
+	echo "Changing Directories so that the relative paths in the pspnet_adhocctl_server dont break..."
+	echo ":/home/container/$ cd /home/container/aemu/pspnet_adhocctl_server"
+	cd /home/container/aemu/pspnet_adhocctl_server
+fi
 
 # Replace Startup Variables
 MODIFIED_STARTUP=`eval echo $(echo ${STARTUP} | sed -e 's/{{/${/g' -e 's/}}/}/g')`
-echo ":/home/container$ ${MODIFIED_STARTUP}"
+echo ":/home/container/aemu/pspnet_adhocctl_server$ ${MODIFIED_STARTUP}"
 
 # Run the Server
 ${MODIFIED_STARTUP}
