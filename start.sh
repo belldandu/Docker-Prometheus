@@ -25,23 +25,22 @@ if [ ! -f "/home/container/aemu/pspnet_adhocctl_server/pspnet_adhocctl_server" ]
 
 	# Compile the PSPNET_ADHOCCTL_SERVER
 	echo "Compiling the PSPNET_ADHOCCTL_SERVER in the cloned repository"
-	echo ":/home/container$ cd aemu/pspnet_adhocctl_server"
-	cd aemu/pspnet_adhocctl_server
-	echo ":/home/container/aemu/pspnet_adhocctl_server$ make"
+	echo ":/home/container$ mv /home/container/aemu/pspnet_adhocctl_server/* /home/container"
+	mv /home/container/aemu/pspnet_adhocctl_server/* /home/container
+	echo ":/home/container$ rm -rf aemu"
+	rm -rf aemu
+	echo ":/home/container/$ make"
 	make
+	
 else
 	echo "Dependencies in place, to re-download this PSP Adhoc server please delete the aemu directory"
 fi
 
-if [ "$(pwd)" -ne "/home/container/aemu/pspnet_adhocctl_server" ]; then
-	echo "Changing Directories so that the relative paths in the pspnet_adhocctl_server dont break..."
-	echo ":/home/container/$ cd /home/container/aemu/pspnet_adhocctl_server"
-	cd /home/container/aemu/pspnet_adhocctl_server
-fi
+cd /home/container
 
 # Replace Startup Variables
 MODIFIED_STARTUP=`eval echo $(echo ${STARTUP} | sed -e 's/{{/${/g' -e 's/}}/}/g')`
-echo ":/home/container/aemu/pspnet_adhocctl_server$ ${MODIFIED_STARTUP}"
+echo ":/home/container/$ ${MODIFIED_STARTUP}"
 
 # Run the Server
 ${MODIFIED_STARTUP}
