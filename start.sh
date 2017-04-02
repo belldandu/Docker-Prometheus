@@ -13,8 +13,8 @@ fi
 if [ ! -f "/home/container/pspnet_adhocctl_server" ]; then
 	# Grab the aemu repository from github
 	echo "Grabbing the aemu repository from github..."
-	echo ":/home/container$ curl -Lo https://github.com/belldandu/aemu/archive/v1.0.tar.gz"
-	curl -Lo https://github.com/belldandu/aemu/archive/v1.0.tar.gz
+	echo ":/home/container$ curl -Lo v1.0.tar.gz https://github.com/belldandu/aemu/archive/v1.0.tar.gz"
+	curl -Lo v1.0.tar.gz https://github.com/belldandu/aemu/archive/v1.0.tar.gz
 
 	# Extract the aemu repo
 	echo "Extracting the aemu repository..."
@@ -30,6 +30,8 @@ if [ ! -f "/home/container/pspnet_adhocctl_server" ]; then
 	echo "Cleaning up the remainder of the files we don't need..."
 	echo ":/home/container$ rm -rf aemu"
 	rm -rf aemu
+	echo ":/home/container$ rm -rf v1.0.tar.gz"
+	rm -rf v1.0.tar.gz
 
 	# Compile the PSPNET_ADHOCCTL_SERVER
 	echo "Compiling the PSPNET_ADHOCCTL_SERVER"
