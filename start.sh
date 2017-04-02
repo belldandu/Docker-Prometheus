@@ -13,8 +13,8 @@ fi
 if [ ! -f "/home/container/pspnet_adhocctl_server" ]; then
 	# Grab the aemu repository from github
 	echo "Grabbing the aemu repository from github..."
-	echo ":/home/container$ curl -Lo aemu.tar.gz https://github.com/belldandu/aemu/archive/v1.0.tar.gz"
-	curl -Lo aemu.tar.gz https://github.com/belldandu/aemu/archive/v1.0.tar.gz
+	echo ":/home/container$ curl -Lo aemu.tar.gz https://github.com/MrColdbird/aemu/archive/v1.0.tar.gz"
+	curl -Lo aemu.tar.gz https://github.com/MrColdbird/aemu/archive/v1.0.tar.gz
 
 	# Extract the aemu repo
 	echo "Extracting the aemu repository..."
