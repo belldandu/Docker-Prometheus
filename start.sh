@@ -26,7 +26,7 @@ if [ ! -f "/home/container/aemu/pspnet_adhocctl_server/pspnet_adhocctl_server" ]
 	# Compile the PSPNET_ADHOCCTL_SERVER
 	echo "Compiling the PSPNET_ADHOCCTL_SERVER in the cloned repository"
 	echo ":/home/container$ cd aemu/pspnet_adhocctl_server"
-	cd aemu/pspnetadhocctl_server
+	cd aemu/pspnet_adhocctl_server
 	echo ":/home/container$ make"
 	make
 else
