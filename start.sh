@@ -23,13 +23,13 @@ if [ ! -f "/home/container/pspnet_adhocctl_server" ]; then
 
 	# Move the necessary files out of the aemu repo
 	echo "Moving PSPNET_ADHOCCTL_SERVER out of the aemu repository..."
-	echo ":/home/container$ mv /home/container/aemu/pspnet_adhocctl_server/* /home/container"
-	mv /home/container/aemu/pspnet_adhocctl_server/* /home/container
+	echo ":/home/container$ mv /home/container/aemu-1.0/pspnet_adhocctl_server/* /home/container"
+	mv /home/container/aemu-1.0/pspnet_adhocctl_server/* /home/container
 
 	# Clean up the remainder files we don't need
 	echo "Cleaning up the remainder of the files we don't need..."
 	echo ":/home/container$ rm -rf aemu"
-	rm -rf aemu
+	rm -rf aemu-1.0
 	echo ":/home/container$ rm -rf v1.0.tar.gz"
 	rm -rf v1.0.tar.gz
 
